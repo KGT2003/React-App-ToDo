@@ -1,0 +1,6 @@
+function Content() {
+    return <p>Cinderella is a young girl who loses her mother and is left in the care of her cruel stepmother and jealous stepsisters. Forced to work as a servant in her own home, she is treated unfairly and made to clean, cook, and sleep near the fireplace, earning the nickname “Cinderella.” When the king announces a royal ball so the prince can find a bride, Cinderella longs to attend but is forbidden by her stepfamily. With the help of her Fairy Godmother, she is magically given a beautiful gown, glass slippers, and a carriage made from a pumpkin—though the magic will only last until midnight.
+
+At the ball, Cinderella captures the prince’s heart, but she must flee when the clock strikes twelve, accidentally leaving behind one glass slipper. Determined to find her, the prince searches the kingdom for the girl whose foot fits the slipper. Despite her stepsisters’ attempts to claim it, the slipper fits Cinderella perfectly. She reveals the matching slipper, proving her identity, and the prince marries her. In the end, kindness and perseverance are rewarded, and Cinderella’s life is transformed.</p>;
+}
+export default Content;
