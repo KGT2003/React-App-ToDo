@@ -4,19 +4,32 @@ import { useState, useCallback } from "react"
  * unordered list.
  * @returns Component
  */
-export default function Sidebar() {
-  let [newMenuItem, setNewMenuItem] = useState("")
+export default function Sidebar({initialMenuItems}) {
+  let [menuItems, setMenuItems] = useState(initialMenuItems);
+  const [newMenuItem, setNewMenuItem] = useState("");
+  const [filter, setFilter] = useState("");
+
+
   // TODO: 2 Using a state hook, maintain the current menu items as an array state.
   // let [menuItems, setMenuItems] = useState(initialMenuItems)
-  let [filter, setFilter] = useState("")
+  const filteredItems = menuItems.filter((item) => {
+    if(filter == "") return true;
+    const regex = new RegExp(filter, "i");
+    return regex.test(item);
+  });
   // Adds a single string passed in as parameter to the state element
   // "menuItems" that holds the set of current menu items.
   let addMenuItem = useCallback(() => {
+    if(newMenuItem.trim() == "") return;
+
+    setMenuItems([newMenuItem, ...menuItems]);
+    setNewMenuItem("");
+  }, [newMenuItem, menuItems]);
     console.log("Added menu item")
     //   // TODO: 3. Add a new menu item to the correct variable associated with this class.
     //   // This involves adding a parameter and changing a class instance variable (props).
     //   setMenuItems([item, ...menuItems])
-  }, [])
+
 
   // TODO: 4. Display ONLY the menu items that contain the filter element value
   // "term" in them. Each menu item should be an unordered list item wrapped in an unordered list (ul) element.
@@ -25,6 +38,13 @@ export default function Sidebar() {
   // its own item.
   return (
     <div>
+      {    }
+      <ul>
+      {filteredItems.map((item, index) => (
+        <li key={index}>{item}</li>
+
+      ))}
+      </ul>
       <input
         type="text"
         id="newMenuItemValue"
@@ -33,10 +53,9 @@ export default function Sidebar() {
       ></input>
       <br />
       <button
-        onClick={() => {
+        onClick={addMenuItem}>
           /* TODO: 3 */
-        }}
-      >
+          addMenuItem
         Add Item
       </button>
       <br />
@@ -48,5 +67,5 @@ export default function Sidebar() {
         placeholder="Filter by..."
       ></input>
     </div>
-  )
+  );
 }
